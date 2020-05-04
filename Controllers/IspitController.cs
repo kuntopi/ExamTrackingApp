@@ -24,10 +24,16 @@ namespace UniversityApp.Controllers
             List<Ispit> ispiti = initializeIspitList();
 
             Ispit newIspit = findIspit(id);
+            if (newIspit != null)
+            {
+                initializeCreateViewData(newIspit);
+                return View("Index", ispiti);
+            }
+            else
+            {
+                return View("Index", ispiti);
 
-            initializeCreateViewData(newIspit);
-
-            return View("Index", ispiti);
+            }
         }
         // GET: Ispit/Details/5
         public ActionResult Details(int id)
@@ -160,12 +166,19 @@ namespace UniversityApp.Controllers
         [NonAction]
         private Ispit findIspit(int id)
         {
-            Ispit ispit = db.Ispits.Single(m => m.ispitId == id);
-            var predmet = db.Predmets.Single(m => m.predmetId == ispit.predmetId);
-            var student = db.Students.Single(m => m.studentId == ispit.studentId);
-            ispit.student = student;
-            ispit.predmet = predmet;
-            return ispit;
+            try
+            {
+                Ispit ispit = db.Ispits.Single(m => m.ispitId == id);
+                var predmet = db.Predmets.Single(m => m.predmetId == ispit.predmetId);
+                var student = db.Students.Single(m => m.studentId == ispit.studentId);
+                ispit.student = student;
+                ispit.predmet = predmet;
+                return ispit;
+            }
+            catch
+            {
+                return null;
+            }
         }
         [NonAction]
         private void initializeDropDownItems()
