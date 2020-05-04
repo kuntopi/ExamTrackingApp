@@ -203,7 +203,7 @@ namespace UniversityApp.Controllers
         [NonAction]
         private List<Ispit> initializeIspitList() {
             var data = from e in db.Ispits
-                       orderby e.ispitId descending
+                       orderby e.ispitId ascending
                        select e;
             List<Ispit> ispiti = data.ToList();
             List<IspitResponse> ispitiRes = new List<IspitResponse>();

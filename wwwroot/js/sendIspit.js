@@ -11,6 +11,7 @@ connection.on("ReceiveMessage", function (isp) {
         noviIspit = "false";
     }
     else {
+        var ispit = document.createElement("tr");
         var encodedMsg = isp;
         var tdBrIndeksa = document.createElement("td");
         tdBrIndeksa.textContent = isp.brIndeksa;
@@ -28,6 +29,7 @@ connection.on("ReceiveMessage", function (isp) {
         document.getElementById("newIspit").appendChild(tdDatum);
         document.getElementById("newIspit").appendChild(tdEdits);
         document.getElementById("tdEdits").innerHTML = "<a href=\" /Ispit/Edit/" + isp.ispitId + "\">Edit</a> | <a href = \"/Ispit/Details/" + isp.ispitId + "\" > Details</a> | <a href=\"/Ispit/Delete/" + isp.ispitId + "\">Delete</a>";
+
     }
 });
 
