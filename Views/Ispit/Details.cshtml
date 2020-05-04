@@ -1,0 +1,42 @@
+﻿@model UniversityApp.Models.Ispit
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Ispit</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.student.brIndeksa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.student.brIndeksa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.predmet.naziv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.predmet.naziv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ocena)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ocena)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.datumPolaganja)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.datumPolaganja)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.ispitId }) |
+    <a asp-action="Index">Back to List</a>
+</div>

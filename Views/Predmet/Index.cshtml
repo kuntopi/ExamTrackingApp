@@ -1,0 +1,44 @@
+﻿@model IEnumerable<UniversityApp.Models.Predmet>
+
+@{
+    ViewData["Title"] = "Index";
+    ViewBag.Title = "Predmeti";
+}
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $.noConflict();
+            $('#stTable').DataTable();
+        });
+    </script>
+}
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="stTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.naziv)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.naziv)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.predmetId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.predmetId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.predmetId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

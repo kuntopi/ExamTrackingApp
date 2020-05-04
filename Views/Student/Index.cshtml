@@ -1,0 +1,65 @@
+﻿@model IEnumerable<UniversityApp.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $.noConflict();
+            $('#stTable').DataTable();
+        });
+    </script>
+}
+
+<h1>Index</h1>
+
+<p id="test">
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table" id="stTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.brIndeksa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.grad)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.brIndeksa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.grad)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.studentId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.studentId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.studentId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

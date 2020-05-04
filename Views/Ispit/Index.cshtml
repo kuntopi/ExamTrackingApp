@@ -1,0 +1,72 @@
+﻿@model IEnumerable<UniversityApp.Models.Ispit>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/sendIspit.js"></script>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $.noConflict();
+            $('#stTable').DataTable();
+        });
+    </script>
+}
+
+<h1>Index</h1>
+@Html.Hidden("noviIspit", null, null)
+@Html.Hidden("ispitId", null, null)
+@Html.Hidden("brIndeksa", null, null)
+@Html.Hidden("predmet", null, null)
+@Html.Hidden("ocena", null, null)
+@Html.Hidden("datum", null, null)
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="stTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.student.brIndeksa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.predmet.naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ocena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.datumPolaganja)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.student.brIndeksa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.predmet.naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ocena)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.datumPolaganja)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ispitId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ispitId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ispitId })
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tr id="newIspit"></tr>
+</table>
+
